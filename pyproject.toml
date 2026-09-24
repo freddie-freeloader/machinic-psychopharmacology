@@ -1,0 +1,49 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "machinic-psychopharmacology"
+version = "0.1.0"
+description = "Pharmacology-inspired activation steering: aripiprazole-like setpoint clamps and methylphenidate-like gain for LLMs."
+readme = "README.md"
+license = { text = "MIT" }
+requires-python = ">=3.10"
+authors = [{ name = "Jonas Benn" }]
+keywords = [
+  "activation-steering",
+  "interpretability",
+  "llm",
+  "steering-vectors",
+]
+classifiers = [
+  "Development Status :: 3 - Alpha",
+  "Intended Audience :: Science/Research",
+  "License :: OSI Approved :: MIT License",
+  "Programming Language :: Python :: 3",
+  "Topic :: Scientific/Engineering :: Artificial Intelligence",
+]
+dependencies = ["numpy>=1.24"]
+
+[project.optional-dependencies]
+dev = ["pytest>=7.4", "pytest-cov>=4.1"]
+hooks = ["torch>=2.1"]
+
+[project.urls]
+Homepage = "https://github.com/freddie-freeloader/machinic-psychopharmacology"
+Issues = "https://github.com/freddie-freeloader/machinic-psychopharmacology/issues"
+AISI = "https://github.com/UKGovernmentBEIS/llm-self-steering"
+
+[project.scripts]
+machinic-psychopharmacology = "machinic_psychopharmacology.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+machinic_psychopharmacology = ["py.typed"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]
+addopts = "-q"
